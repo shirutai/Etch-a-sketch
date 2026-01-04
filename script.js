@@ -14,6 +14,27 @@ function divinator (numberOfDivs){
     
 }
 }
+divinator(16)
 
-divinator(10)
+
+function trail (pixels){
+    pixels.target.classList.add("onPixels");
+    pixels.target.classList.remove("pixels")
+}
+document.querySelector(".container").addEventListener("mouseover", trail);
+
+function reset (){
+    let drawn = document.querySelectorAll(".onPixels");
+    for (let elem of drawn){
+        elem.classList.add("pixels");
+        elem.classList.remove('onPixels');
+    }
+    
+
+}
+
+const resetBtn = document.getElementById("resetBtn");
+
+resetBtn.addEventListener("click", reset);
+
 
