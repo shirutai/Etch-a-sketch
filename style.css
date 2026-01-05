@@ -5,8 +5,8 @@ body{
 
 .container{
     display: flex;
-    width: 700px;
-    height: 700px;
+    width: 960px;
+    height: 960px;
     justify-content: center;
     justify-self: center;
 }
@@ -23,7 +23,10 @@ body{
 }
 
 .onPixels{
-    background-color: black;
+    background-color: rgb(
+        var(--r, 0),
+        var(--g, 0),
+        var(--b, 0));
     display: flex;
     height: 100%;
 }

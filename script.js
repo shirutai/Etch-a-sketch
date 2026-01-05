@@ -18,6 +18,7 @@ divinator(16)
 
 
 function trail (pixels){
+    if (!pixels.target.classList.contains("pixels")) return;
     pixels.target.classList.add("onPixels");
     pixels.target.classList.remove("pixels")
 }
@@ -35,6 +36,38 @@ function reset (){
 
 const resetBtn = document.getElementById("resetBtn");
 
-resetBtn.addEventListener("click", reset);
+const colorBtn = document.getElementById("colorBtn");
+
+const sizeBtn = document.getElementById("sizeBtn");
+
+
+resetBtn.addEventListener("click", reset); 
+
+let colorSwitch = false
+colorBtn.addEventListener("click", () => {
+    colorSwitch = !colorSwitch
+    console.log(colorSwitch);
+})
+
+function color(pixels) {
+    if (!pixels.target.classList.contains("pixels") && 
+        !pixels.target.classList.contains("onPixels")) return;
+
+    let r = Math.floor(Math.random() * 256);
+    let g = Math.floor(Math.random() * 256);
+    let b = Math.floor(Math.random() * 256);
+
+    pixels.target.style.setProperty("--r", r);
+    pixels.target.style.setProperty("--g", g);
+    pixels.target.style.setProperty("--b", b);
+}
+
+colorBtn.addEventListener("click", () => {
+    container.addEventListener("mouseover", color);
+});
+
+
+
+
 
 
