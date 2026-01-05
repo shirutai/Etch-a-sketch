@@ -16,14 +16,6 @@ function divinator (numberOfDivs){
 }
 divinator(16)
 
-
-function trail (pixels){
-    if (!pixels.target.classList.contains("pixels")) return;
-    pixels.target.classList.add("onPixels");
-    pixels.target.classList.remove("pixels")
-}
-document.querySelector(".container").addEventListener("mouseover", trail);
-
 function reset (){
     let drawn = document.querySelectorAll(".onPixels");
     for (let elem of drawn){
@@ -49,25 +41,26 @@ colorBtn.addEventListener("click", () => {
     console.log(colorSwitch);
 })
 
-function color(pixels) {
+function draw (pixels){
     if (!pixels.target.classList.contains("pixels") && 
-        !pixels.target.classList.contains("onPixels")) return;
+        !pixels.target.classList.contains("onPixels"))return;
 
-    let r = Math.floor(Math.random() * 256);
-    let g = Math.floor(Math.random() * 256);
-    let b = Math.floor(Math.random() * 256);
+    pixels.target.classList.add("onPixels");
+    pixels.target.classList.remove("pixels");
 
-    pixels.target.style.setProperty("--r", r);
-    pixels.target.style.setProperty("--g", g);
-    pixels.target.style.setProperty("--b", b);
+    if(colorSwitch == true){
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+
+        pixels.target.style.setProperty("--r", r);
+        pixels.target.style.setProperty("--g", g);
+        pixels.target.style.setProperty("--b", b);
+    }
+    else{
+        pixels.target.style.setProperty("--r", 0);
+        pixels.target.style.setProperty("--g", 0);
+        pixels.target.style.setProperty("--b", 0);
+    }
 }
-
-colorBtn.addEventListener("click", () => {
-    container.addEventListener("mouseover", color);
-});
-
-
-
-
-
-
+container.addEventListener("mouseover", draw);
