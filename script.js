@@ -1,6 +1,19 @@
 const container = document.querySelector(".container");
 
+const resetBtn = document.getElementById("resetBtn");
+
+const colorBtn = document.getElementById("colorBtn");
+
+const sizeBtn = document.getElementById("sizeBtn");
+
 function divinator (numberOfDivs){
+    if(numberOfDivs > 100){
+        alert("u goofy ass, that is too damn big try bellow a 100")
+        return;
+    }
+    if (numberOfDivs == null || undefined) {
+        alert("That ain't no number partner");
+    }
     for (let i = 0; i < numberOfDivs; i++) {
         const canvas = document.createElement("div");
         canvas.classList.add("column");
@@ -14,25 +27,19 @@ function divinator (numberOfDivs){
     
 }
 }
-divinator(16)
 
 function reset (){
     let drawn = document.querySelectorAll(".onPixels");
     for (let elem of drawn){
+        elem.style.setProperty("--r", "");
+        elem.style.setProperty("--g", "");
+        elem.style.setProperty("--b", "");
         elem.classList.add("pixels");
         elem.classList.remove('onPixels');
     }
     
 
 }
-
-const resetBtn = document.getElementById("resetBtn");
-
-const colorBtn = document.getElementById("colorBtn");
-
-const sizeBtn = document.getElementById("sizeBtn");
-
-
 resetBtn.addEventListener("click", reset); 
 
 let colorSwitch = false
@@ -64,3 +71,12 @@ function draw (pixels){
     }
 }
 container.addEventListener("mouseover", draw);
+
+let size = 16;
+divinator(size);
+function sizeFunc (){
+    num = Number(prompt("what size do you want"));
+    container.innerHTML = "";
+    divinator(num);
+}
+sizeBtn.addEventListener("click", sizeFunc)
